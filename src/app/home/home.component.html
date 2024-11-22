@@ -1,3 +1,9 @@
-<div class="home-wrapper">
-  <app-navbar></app-navbar>
+<div class="flex flex-col relative h-screen w-full">
+  <div class="fixed w-full z-20">
+    <navbar></navbar>
+  </div>
+
+  <div class="flex h-full w-full pt-16 z-10">
+    <router-outlet></router-outlet>
+  </div>
 </div>
