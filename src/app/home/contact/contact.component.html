@@ -8,7 +8,7 @@
       <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
          <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @for (contact of contacts; track contact.id) {
-               <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow" (click)="handleDialog($event)">
+               <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow" (click)="selectContact(contact)">
                   <div class="flex w-full items-center justify-between space-x-6 p-6">
                      <div class="flex-1 truncate">
                         <div class="flex items-center space-x-3">
@@ -60,7 +60,7 @@
 </div>
 
 @if(showContactDialog) {
-   <contact-card (showDialog)="handleDialog($event)"></contact-card>
+   <contact-card (showDialog)="handleDialog($event)" [contactData]="selectedContact"></contact-card>
 }
 
 
