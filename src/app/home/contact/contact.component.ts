@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ContactService } from '../../../services/contact.service';
-import { HttpClient } from '@angular/common/http';
 import { Contact } from "../../interfaces/contact.interface";
+import { ContactCardComponent } from "./contact-card/contact-card.component";
 
 @Component({
     selector: 'contact',
     imports: [
+        ContactCardComponent,
     ],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
@@ -15,6 +16,7 @@ import { Contact } from "../../interfaces/contact.interface";
 export class ContactComponent {
 
     public contacts: Contact[] = [];
+    public showContactDialog: boolean = false;
 
     constructor( private contactService: ContactService ) {
 
@@ -27,6 +29,11 @@ export class ContactComponent {
             console.log(this.contacts);
         });
 
+    }
+
+    public handleDialog(event: any) {
+        this.showContactDialog = event;
+        console.log('Dialog closed:', event);
     }
 
 }
