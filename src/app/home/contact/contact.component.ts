@@ -25,8 +25,13 @@ export class ContactComponent {
         this.contactService.getAllContacts();
         this.contactService.contacts$.subscribe(response => {
             this.contacts = response;
+            this.sortContacts(this.contacts);
         });
         console.log(this.contacts);
+    }
+
+    private sortContacts(contacts: Contact[]) {
+        contacts.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? ''));
     }
 
     public handleDialog(event: any) {

@@ -10,11 +10,9 @@ import { Contact } from "../../../interfaces/contact.interface";
 export class ContactCardComponent {
 
     @Output('showDialog') showDialog = new EventEmitter<boolean>();
-    //@Input('data') data: Contact = {};
     @Input() contactData?: Contact;
 
     constructor() {
-
     }
 
     public ngOnInit() {
@@ -23,5 +21,6 @@ export class ContactCardComponent {
 
     public preventPropagation(event: any) {
         event.stopPropagation();
+        console.log('Prevent propagation');
     }
 }
