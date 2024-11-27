@@ -2,11 +2,15 @@ import { Component, Input } from '@angular/core';
 import { ContactService } from '../../../services/contact.service';
 import { Contact } from "../../interfaces/contact.interface";
 import { ContactCardComponent } from "./contact-card/contact-card.component";
+import { NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
 
 @Component({
     selector: 'contact',
     imports: [
         ContactCardComponent,
+        UpperCasePipe,
+        TitleCasePipe,
+        NgStyle,
     ],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
@@ -18,6 +22,7 @@ export class ContactComponent {
     public contacts: Contact[] = [];
     public showContactDialog: boolean = false;
     public selectedContact?: Contact;
+    public indexLetters: string[] = [];
 
     constructor( private contactService: ContactService) {}
 
@@ -31,7 +36,11 @@ export class ContactComponent {
     }
 
     private sortContacts(contacts: Contact[]) {
-        contacts.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? ''));
+        // const name = contacts.map(contact => contact.name);
+        // const splitName = name.map(name => name?.split(' '));
+        // console.log(splitName);
+        contacts.sort((a, b) => (a.lastname ?? '').localeCompare(b.lastname ?? ''));
+
     }
 
     public handleDialog(event: any) {
@@ -42,4 +51,5 @@ export class ContactComponent {
         this.selectedContact = contact;
         this.showContactDialog = true;
     }
+
 }

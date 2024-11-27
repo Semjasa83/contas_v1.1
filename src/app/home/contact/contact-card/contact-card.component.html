@@ -7,46 +7,53 @@
 
          <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all w-4 sm:my-8 sm:w-full sm:max-w-lg sm:p-6" (click)="preventPropagation($event)">
             <div class="mx-auto max-w-2xl text-center">
-               <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{ contactData?.name }}</h2>
+               <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{ contactData?.firstname | titlecase }} {{ contactData?.lastname | titlecase }}</h2>
             </div>
-            <form action="#" method="POST" class="mx-auto mt-8 max-w-xl sm:mt-8">
+            <form [formGroup]="contactForm" action="#" method="POST" class="mx-auto mt-8 max-w-xl sm:mt-8">
                <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   <div class="sm:col-span-2">
-                     <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">Name</label>
+                     <label for="firstname" class="block text-sm/6 font-semibold text-gray-900">First Name *</label>
                      <div class="mt-2.5">
-                        <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                        <input type="text" formControlName="firstname" id="firstname" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                      </div>
                   </div>
                   
                   <div class="sm:col-span-2">
-                     <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
+                     <label for="lastname" class="block text-sm/6 font-semibold text-gray-900">Last Name *</label>
                      <div class="mt-2.5">
-                        <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                        <input type="text" formControlName="lastname" id="lastname" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                      </div>
                   </div>
                   
                   <div class="sm:col-span-2">
-                     <label for="phone" class="block text-sm/6 font-semibold text-gray-900">Phone</label>
+                     <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email *</label>
                      <div class="mt-2.5">
-                        <input type="email" name="email" id="phone" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                        <input type="email" formControlName="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                      </div>
                   </div>
                   
                   <div class="sm:col-span-2">
-                     <label for="message" class="block text-sm/6 font-semibold text-gray-900">Message</label>
+                     <label for="phone" class="block text-sm/6 font-semibold text-gray-900">Phone *</label>
                      <div class="mt-2.5">
-                        <textarea name="message" id="message" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
+                        <input type="text" formControlName="phone" id="phone" autocomplete="phone"  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                     </div>
+                  </div>
+                  
+                  <div class="sm:col-span-2">
+                     <label for="note" class="block text-sm/6 font-semibold text-gray-900">Note</label>
+                     <div class="mt-2.5">
+                        <textarea formControlName="note"  id="note" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
                      </div>
                   </div>
                   
                </div>
                <div class="mt-10">
-                  <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's talk</button>
+                  <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
                </div>
             </form>
             
             <div class="mt-5 sm:mt-6">
-               <button type="button" class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go back to dashboard</button>
+               <button type="button" class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="showDialog.emit(false)">Close</button>
             </div>
          </div>
       </div>
