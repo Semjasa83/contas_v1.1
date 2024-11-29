@@ -27,6 +27,39 @@ export class ContactService {
         );
   }
 
+  public deleteContact(id: string): void {
+    this.http.delete(this.contactsUrl + id + '/')
+        .pipe(
+            catchError(this.handleError)
+        )
+        .subscribe(
+            () => this.getAllContacts(),
+            (error: any) => console.error('Error deleting contact:', error)
+        );
+  }
+
+  public updateContact(id: string, contact: Contact): void {
+    this.http.put(this.contactsUrl + id  + '/', contact)
+        .pipe(
+            catchError(this.handleError)
+        )
+        .subscribe(
+            () => this.getAllContacts(),
+            (error: any) => console.error('Error updating contact:', error)
+        );
+  }
+
+  public createContact(contact: Contact): void {
+    this.http.post(this.contactsUrl, contact)
+        .pipe(
+            catchError(this.handleError)
+        )
+        .subscribe(
+            () => this.getAllContacts(),
+            (error: any) => console.error('Error creating contact:', error)
+        );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
@@ -38,6 +71,4 @@ export class ContactService {
     }
     return throwError(errorMessage);
   }
-
-
 }
