@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Contact } from "../../../interfaces/contact.interface";
 import { TitleCasePipe } from "@angular/common";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ContactService } from "../../../../services/contact.service";
 
 @Component({
     selector: 'contact-card',
@@ -19,8 +20,7 @@ export class ContactCardComponent {
 
     public contactForm!: FormGroup;
 
-
-    constructor() {}
+    constructor(private contactService: ContactService) {}
 
     ngOnInit() {
         this.contactForm = new FormGroup({
@@ -30,12 +30,23 @@ export class ContactCardComponent {
             phone : new FormControl(this.contactData?.phone, Validators.required),
             note : new FormControl(this.contactData?.note),
         })
-        console.log(this.contactData);
     }
-
 
     public preventPropagation(event: any) {
         event.stopPropagation();
         console.log('Prevent propagation');
     }
+
+    public deleteContact() {
+        if(this.contactData?.id) {
+            this.contactService.deleteContact(this.contactData?.id);
+        }
+    }
+
+    public updateContact(id?: string | null | undefined) {
+        if(id) {
+            this.contactService.updateContact(id, this.contactForm.value);
+        }
+    }
+
 }
