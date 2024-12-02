@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import {UserLoginComponent} from './user-login/user-login.component';
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'login',
-  imports: [
-    UserLoginComponent
-  ],
+    imports: [
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive
+    ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
