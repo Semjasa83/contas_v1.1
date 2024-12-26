@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '../auth/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './home/contact/contact.component';
@@ -27,3 +28,10 @@ export const routes: Routes = [
     },
     // { path: '**', component: PageNotFoundComponent },
 ];
+
+
+// export const routes: Routes = [
+//     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+//     { path: 'login', component: LoginComponent },
+//     // other routes
+// ];
