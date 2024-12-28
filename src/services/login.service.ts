@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, catchError, throwError } from "rxjs";
 import { User, RegisterUser } from "../app/interfaces/user.interface";
+import { data } from "autoprefixer";
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,14 @@ export class LoginService {
             catchError(this.handleError)
         )
         .subscribe(
-            (data: any) => console.log('Login successful:', data.token),
+            (data: any) => {
+                console.log('Login successful:', data);
+                if (data.token) {
+                    localStorage.setItem('authToken', data.token);
+                }
+            },
             (error: any) => console.error('Error logging in:', error),
         );
-
   }
 
   public register(user: RegisterUser): void {
