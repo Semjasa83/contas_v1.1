@@ -9,7 +9,7 @@
          <div>
             <label for="username" class="block text-sm/6 font-medium text-gray-900">Username</label>
             <div class="mt-2">
-               <input id="username" formControlName="username" name="username" type="username" autocomplete="username" required
+               <input id="username" formControlName="username" name="username" type="text" autocomplete="username" required
                       class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
             </div>
          </div>
@@ -17,34 +17,16 @@
          <div>
             <div class="flex items-center justify-between">
                <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
-               <div class="text-sm">
-                  <a routerLink="password" routerLinkActive="active-route"
-                     class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-               </div>
+<!--               <div class="text-sm">-->
+<!--                  <a routerLink="password" routerLinkActive="active-route"-->
+<!--                     class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>-->
+<!--               </div>-->
             </div>
             <div class="mt-2">
                <input id="password" formControlName="password" name="password" type="password" autocomplete="current-password" required
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
             </div>
          </div>
-         
-<!--         <div class="flex gap-3">-->
-<!--            <div class="flex h-6 shrink-0 items-center">-->
-<!--               <div class="group grid size-4 grid-cols-1">-->
-<!--                  <input id="remember-me" name="remember-me" type="checkbox"-->
-<!--                         class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">-->
-<!--                  <svg-->
-<!--                      class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"-->
-<!--                      viewBox="0 0 14 14" fill="none">-->
-<!--                     <path class="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2"-->
-<!--                           stroke-linecap="round" stroke-linejoin="round"/>-->
-<!--                     <path class="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2"-->
-<!--                           stroke-linecap="round" stroke-linejoin="round"/>-->
-<!--                  </svg>-->
-<!--               </div>-->
-<!--            </div>-->
-<!--            <label for="remember-me" class="block text-sm/6 text-gray-900">Remember me</label>-->
-<!--         </div>-->
          
          <div>
             <button type="submit"
@@ -56,8 +38,8 @@
       
       <p class="mt-10 text-center text-sm/6 text-gray-500">
          Not a member?
-         <a routerLink="/home" routerLinkActive="active-route"
-            class="font-semibold text-indigo-600 hover:text-indigo-500">Guest Login</a>
+         <a routerLink="/login/registration" routerLinkActive="active-route"
+            class="font-semibold text-indigo-600 hover:text-indigo-500">Create Account</a>
       </p>
    </div>
 </div>
