@@ -7,7 +7,7 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { reducers, metaReducers } from '../reducers';
-import { TokenInterceptor } from '../auth/token.interceptor';
+import { tokenInterceptor } from '../auth/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
         provideStore(reducers, { metaReducers }),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
         provideEffects(),
-        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useValue: tokenInterceptor, multi: true }
     ]
 };

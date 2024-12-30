@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, catchError, throwError } from "rxjs";
 import { Contact } from "../app/interfaces/contact.interface";
