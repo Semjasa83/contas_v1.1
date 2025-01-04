@@ -3,10 +3,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'password-forgot',
-  imports: [
-    RouterLink,
-    RouterLinkActive
-  ],
+  imports: [],
   templateUrl: './password-forgot.component.html',
   styleUrl: './password-forgot.component.scss'
 })

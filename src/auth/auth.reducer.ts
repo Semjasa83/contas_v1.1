@@ -2,21 +2,32 @@ import { createReducer, on } from '@ngrx/store';
 import { loginSuccess, logout } from './auth.actions';
 
 export interface AuthState {
-    token: string | null;
+  token: string | null;
 }
 
+const getTokenFromLocalStorage = (): string | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    return localStorage.getItem('authToken');
+  }
+  return null;
+};
+
 export const initialState: AuthState = {
-    token: null,
+  token: getTokenFromLocalStorage(),
 };
 
 export const authReducer = createReducer(
-    initialState,
-    on(loginSuccess, (state, { token }) => {
-        localStorage.setItem('authToken', token); // Save token to localStorage
-        return { ...state, token };
-    }),
-    on(logout, state => {
-        localStorage.removeItem('authToken'); // Remove token from localStorage
-        return { ...state, token: null };
-    })
+  initialState,
+  on(loginSuccess, (state, { token }) => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('authToken', token);
+    }
+    return { ...state, token };
+  }),
+  on(logout, (state) => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.removeItem('authToken');
+    }
+    return { ...state, token: null };
+  })
 );

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { BehaviorSubject, catchError, throwError } from "rxjs";
+import { BehaviorSubject, catchError, Observable, throwError } from "rxjs";
 import { Contact } from "../app/interfaces/contact.interface";
 
 
@@ -16,26 +16,36 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllContacts(): void {
-    this.http.get<Contact[]>(this.contactsUrl)
-        .pipe(
-            catchError(this.handleError)
-        )
-        .subscribe(
-            (data: Contact[]) => this.contacts.next(data),
-            (error: any) => console.error('Error fetching contacts:', error)
-        );
+  //public getAllContacts(): void {
+    // this.http.get<Contact[]>(this.contactsUrl)
+    //     .pipe(
+    //         catchError(this.handleError)
+    //     )
+    //     .subscribe(
+    //         (data: Contact[]) => this.contacts.next(data),
+    //         (error: any) => console.error('Error fetching contacts:', error)
+    //     );
+  //}
+  // public getAllContacts(): Observable<Contact[]> {
+  //   const token = localStorage.getItem('authToken') || '';
+  //   const headers = { 'Authorization': `Bearer ${token}` };
+  //   return this.http.get<Contact[]>(this.contactsUrl, { headers })
+  //     .pipe(
+  //       catchError(this.handleError)
+  //     );
+  // }
+  public getAllContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(this.contactsUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  public deleteContact(id: string): void {
-    this.http.delete(this.contactsUrl + id + '/')
-        .pipe(
-            catchError(this.handleError)
-        )
-        .subscribe(
-            () => this.getAllContacts(),
-            (error: any) => console.error('Error deleting contact:', error)
-        );
+  public deleteContact(id: string): Observable<any> {
+    return this.http.delete(`${this.contactsUrl}${id}/`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   public updateContact(id: string, contact: Contact): void {
@@ -69,6 +79,6 @@ export class ContactService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    return throwError(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }

@@ -30,26 +30,35 @@ export class ContactComponent {
 
     constructor( private contactService: ContactService) {}
 
-    public async ngOnInit() {
-        this.contactService.getAllContacts();
-        this.contactService.contacts$.subscribe(response => {
-            this.contacts = response;
-            this.sortContacts(this.contacts);
+    public ngOnInit(): void {
+        this.contactService.getAllContacts().subscribe(response => {
+          this.contacts = response;
+          this.sortContacts(this.contacts);
+        }, error => {
+          console.error('Error fetching contacts:', error);
         });
-    }
+      }
 
     private sortContacts(contacts: Contact[]) {
         this.indexLetters = [];
         this.indexContacts = {};
         contacts.sort((a, b) => (a.lastname ?? '').localeCompare(b.lastname ?? ''));
-        contacts.find(contact => {
+        // contacts.find(contact => {
+        //     const firstLetter = (contact.lastname ?? '')[0].toUpperCase();
+        //     if (!this.indexLetters.includes(firstLetter)) {
+        //         this.indexLetters.push(firstLetter);
+        //         this.indexContacts[firstLetter] = [];
+        //     }
+        //     this.indexContacts[firstLetter].push(contact);
+        // })
+        contacts.forEach(contact => {
             const firstLetter = (contact.lastname ?? '')[0].toUpperCase();
             if (!this.indexLetters.includes(firstLetter)) {
                 this.indexLetters.push(firstLetter);
                 this.indexContacts[firstLetter] = [];
             }
             this.indexContacts[firstLetter].push(contact);
-        })
+        });
     }
 
     public handleDialog(event: any) {
