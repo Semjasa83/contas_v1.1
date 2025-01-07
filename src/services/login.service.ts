@@ -24,8 +24,9 @@ export class LoginService {
       .subscribe(
         (data) => {
           console.log('Login successful:', data);
-          if (data.token) {
-            this.store.dispatch(loginSuccess({ token: data.token }));
+          if (data.Bearer) {
+            localStorage.setItem('authToken', data.Bearer);
+            this.store.dispatch(loginSuccess({ token: data.Bearer }));
             this.router.navigate(['/home']);
           }
         },
