@@ -17,21 +17,17 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   public getAllContacts(): Observable<Contact[]> {
-    const token = localStorage.getItem('authToken') || '';
-    const headers = { 'Authorization': `Bearer ${token}` };
-    console.log('Token:', headers);
+    const token = (localStorage.getItem('authToken') || '').trim();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    console.log('Authorization Header:', headers.get('Authorization'));
     
     return this.http.get<Contact[]>(this.contactsUrl, { headers })
       .pipe(
         catchError(this.handleError)
       );
   }
-  // public getAllContacts(): Observable<Contact[]> {
-  //   return this.http.get<Contact[]>(this.contactsUrl)
-  //     .pipe(
-  //       catchError(this.handleError)
-  //     );
-  // }
 
   public deleteContact(id: string): Observable<any> {
     return this.http.delete(`${this.contactsUrl}${id}/`)

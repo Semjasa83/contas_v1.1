@@ -43,14 +43,6 @@ export class ContactComponent {
         this.indexLetters = [];
         this.indexContacts = {};
         contacts.sort((a, b) => (a.lastname ?? '').localeCompare(b.lastname ?? ''));
-        // contacts.find(contact => {
-        //     const firstLetter = (contact.lastname ?? '')[0].toUpperCase();
-        //     if (!this.indexLetters.includes(firstLetter)) {
-        //         this.indexLetters.push(firstLetter);
-        //         this.indexContacts[firstLetter] = [];
-        //     }
-        //     this.indexContacts[firstLetter].push(contact);
-        // })
         contacts.forEach(contact => {
             const firstLetter = (contact.lastname ?? '')[0].toUpperCase();
             if (!this.indexLetters.includes(firstLetter)) {

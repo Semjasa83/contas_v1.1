@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
     return this.store.select(state => state.auth.token).pipe(
       take(1),
       map(token => {
-        console.log('AuthGuard token:', token); // Debug-Ausgabe
         if (token) {
           return true;
         } else {
