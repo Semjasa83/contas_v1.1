@@ -15,7 +15,7 @@ import { ContactService } from "../../../../services/contact.service";
 })
 export class ContactCardComponent {
 
-    @Output('showDialog') showDialog = new EventEmitter<boolean>();
+    @Output('showEditDialog') showEditDialog = new EventEmitter<boolean>();
     @Input() contactData?: Contact;
 
     public contactForm!: FormGroup;
@@ -34,12 +34,11 @@ export class ContactCardComponent {
 
     public preventPropagation(event: any) {
         event.stopPropagation();
-        console.log('Prevent propagation');
     }
 
     public deleteContact() {
         if(this.contactData?.id) {
-            this.contactService.deleteContact(this.contactData?.id);
+            this.contactService.deleteContact(this.contactData.id);
         }
     }
 
@@ -47,6 +46,11 @@ export class ContactCardComponent {
         if(id) {
             this.contactService.updateContact(id, this.contactForm.value);
         }
+        this.showEditDialog.emit(false);
     }
 
+    public createContact() {
+        this.contactService.createContact(this.contactForm.value);
+        this.showEditDialog.emit(false);
+    }
 }

@@ -3,16 +3,16 @@ import { ContactService } from '../../../services/contact.service';
 import { Contact } from "../../interfaces/contact.interface";
 import { ContactCardComponent } from "./contact-card/contact-card.component";
 import { NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
-import { ContactEditComponent } from "./contact-edit/contact-edit.component";
+import { ContactCreateComponent } from "./contact-create/contact-create.component";
 
 @Component({
     selector: 'contact',
     imports: [
         ContactCardComponent,
+        ContactCreateComponent,
         UpperCasePipe,
         TitleCasePipe,
         NgStyle,
-        ContactEditComponent,
     ],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',
@@ -22,8 +22,8 @@ import { ContactEditComponent } from "./contact-edit/contact-edit.component";
 export class ContactComponent {
 
     public contacts: Contact[] = [];
-    public showContactDialog: boolean = false;
     public showContactEditDialog: boolean = false;
+    public showContactCreateDialog: boolean = false;
     public selectedContact?: Contact;
     public indexLetters: string[] = [];
     public indexContacts: { [key: string]: Contact[] } = {};
@@ -53,21 +53,21 @@ export class ContactComponent {
         });
     }
 
-    public handleDialog(event: any) {
-        this.showContactDialog = event;
+    public handleEditDialog(event: boolean) {
+        this.showContactEditDialog = event;
     }
 
-    public handleEditDialog(event: any) {
-        this.showContactEditDialog = event;
+    public handleCreateDialog(event: boolean) {
+        this.showContactCreateDialog = event;
     }
 
     public selectContact(contact: Contact) {
         this.selectedContact = contact;
-        this.showContactDialog = true;
-    }
-
-    public openEditContact() {
         this.showContactEditDialog = true;
     }
+
+    // public trackById(index: number, item: Contact): any {
+    //     return item.id;
+    // }
 
 }
