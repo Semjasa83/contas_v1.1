@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Contact } from "../../../interfaces/contact.interface";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ContactService } from "../../../../services/contact.service";
@@ -14,6 +14,7 @@ import { ContactService } from "../../../../services/contact.service";
 export class ContactCreateComponent {
 
   @Output('showCreateDialog') showCreateDialog = new EventEmitter<boolean>();
+  @Output() contactCreated = new EventEmitter<Contact>();
 
   public contactForm!: FormGroup;
 
@@ -24,6 +25,7 @@ export class ContactCreateComponent {
       firstname : new FormControl('', Validators.required),
       lastname : new FormControl('', Validators.required),
       email : new FormControl('', Validators.required),
+      company: new FormControl(''),
       phone : new FormControl('', Validators.required),
       note : new FormControl(''),
     })
@@ -33,8 +35,13 @@ export class ContactCreateComponent {
     event.stopPropagation();
   }
 
-  public createContact() {
-    this.contactService.createContact(this.contactForm.value);
-    this.showCreateDialog.emit(false);
+  public async createContact() {
+    if (this.contactForm.valid) {
+      this.contactService.createContact(this.contactForm.value);
+      this.contactCreated.emit(this.contactForm.value);
+      this.showCreateDialog.emit(false);
+    } else {
+      console.error('Form is invalid');
+    }
   }
 }

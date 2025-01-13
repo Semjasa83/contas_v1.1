@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContactService } from '../../../services/contact.service';
 import { Contact } from "../../interfaces/contact.interface";
 import { ContactCardComponent } from "./contact-card/contact-card.component";
@@ -66,8 +66,16 @@ export class ContactComponent {
         this.showContactEditDialog = true;
     }
 
-    // public trackById(index: number, item: Contact): any {
-    //     return item.id;
-    // }
+    public onContactDeleted() {
+        this.contactService.getAllContacts().subscribe(response => {
+            this.contacts = response;
+            this.sortContacts(this.contacts);
+        });
+    }
+
+    public onContactCreated(newContact: Contact) {
+        this.contacts.push(newContact);
+        this.sortContacts(this.contacts);
+    }
 
 }

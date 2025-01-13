@@ -16,6 +16,7 @@ import { ContactService } from "../../../../services/contact.service";
 export class ContactCardComponent {
 
     @Output('showEditDialog') showEditDialog = new EventEmitter<boolean>();
+    @Output() contactDeleted = new EventEmitter<void>();
     @Input() contactData?: Contact;
 
     public contactForm!: FormGroup;
@@ -27,6 +28,7 @@ export class ContactCardComponent {
             firstname : new FormControl(this.contactData?.firstname, Validators.required),
             lastname : new FormControl(this.contactData?.lastname, Validators.required),
             email : new FormControl(this.contactData?.email, Validators.required),
+            company: new FormControl(this.contactData?.company),
             phone : new FormControl(this.contactData?.phone, Validators.required),
             note : new FormControl(this.contactData?.note),
         })
@@ -36,21 +38,21 @@ export class ContactCardComponent {
         event.stopPropagation();
     }
 
-    public deleteContact() {
-        if(this.contactData?.id) {
+    public async deleteContact() {
+        if (this.contactForm.valid && this.contactData?.id) {
             this.contactService.deleteContact(this.contactData.id);
+            this.contactDeleted.emit();
+        } else {
+            console.error('Form is invalid or contact ID is missing');
         }
     }
 
-    public updateContact(id?: string | null | undefined) {
-        if(id) {
+    public async updateContact(id?: string | null | undefined) {
+        if (this.contactForm.valid && id) {
             this.contactService.updateContact(id, this.contactForm.value);
+            this.showEditDialog.emit(false);
+        } else {
+            console.error('Form is invalid or contact ID is missing');
         }
-        this.showEditDialog.emit(false);
-    }
-
-    public createContact() {
-        this.contactService.createContact(this.contactForm.value);
-        this.showEditDialog.emit(false);
     }
 }
