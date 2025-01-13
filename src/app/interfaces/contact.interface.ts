@@ -6,6 +6,7 @@ export interface Contact {
     phone: string | null;
     note: string | null;
     color: string | null;
+    company: string | null;
     created_at: string | null;
     updated_at: string | null;
 }
@@ -20,6 +21,7 @@ export class ContactImpl implements Contact {
         public phone: string | null = null,
         public note: string | null = '',
         public color: string | null = '',
+        public company: string | null = '',
         public created_at: string | null = '',
         public updated_at: string | null = ''
 
