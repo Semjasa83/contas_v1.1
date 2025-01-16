@@ -6,6 +6,7 @@ import { PasswordForgotComponent } from "./login/password-forgot/password-forgot
 import { UserLoginComponent } from "./login/user-login/user-login.component";
 import { RegistrationComponent } from "./login/registration/registration.component";
 import { AuthGuard } from '../auth/auth.guard';
+import { NotesComponent } from "./home/notes/notes.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // redirect to `first-component`
@@ -23,7 +24,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: DashboardComponent },
             { path: 'dashboard', component: DashboardComponent },
-            //{ path: 'board', component: BoardComponent },
+            { path: 'board', component: NotesComponent },
             { path: 'contacts', component: ContactComponent},
         ]
     },

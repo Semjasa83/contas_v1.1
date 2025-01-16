@@ -1,0 +1,118 @@
+<div class="py-10 bg-white w-screen overflow-x-hidden">
+   <header>
+      <div class="flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Board</h1>
+         <button type="button"
+                 class="ml-8 rounded-full bg-indigo-600 px-2 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                 >
+            <icon-add [color]="'#ffffff'"  [width]="'1.5rem'" [height]="'1.5rem'"></icon-add>
+         </button>
+      </div>
+   </header>
+   <main class="flex justify-center w-full">
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      
+         <div cdkDropListGroup class="drop-list-wrapper">
+            <section class="board-wrapper">
+<!--               <div class="board-section">-->
+<!--                  <div class="headline-wrapper">-->
+<!--                     <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>-->
+<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
+<!--                  </div>-->
+<!--                  <div class="board-subsection">-->
+<!--                     <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList-->
+<!--                              [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"-->
+<!--                              [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">-->
+<!--                        <ng-container *ngIf="todo.length === 0">-->
+<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
+<!--                        </ng-container>-->
+<!--                        @if (tasks.length > 0) {-->
+<!--                           @for (task of todo; track trackByTaskId( idx, task ); let idx = $index) {-->
+<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
+<!--                           }-->
+<!--                        }-->
+<!--                     </section>-->
+<!--                  </div>-->
+<!--               </div>-->
+            </section>
+            
+            <section class="board-wrapper">
+<!--               <div class="board-section">-->
+<!--                  <div class="headline-wrapper">-->
+<!--                     <span class="headline">{{ 'Home.Board.Progress' | translate }}</span>-->
+<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
+<!--                  </div>-->
+<!--                  <div class="board-subsection">-->
+<!--                     <section class="drag-area" id="cdk-drop-list-1" #listProgress="cdkDropList" cdkDropList-->
+<!--                              [cdkDropListConnectedTo]="[listTodo, listFeedback, listDone]"-->
+<!--                              [cdkDropListData]="progress" (cdkDropListDropped)="drop($event)">-->
+<!--                        <ng-container *ngIf="progress.length === 0">-->
+<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
+<!--                        </ng-container>-->
+<!--                        @if (tasks.length > 0) {-->
+<!--                           @for (task of progress; track trackByTaskId( idx, task ); let idx = $index) {-->
+<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
+<!--                           }-->
+<!--                        }-->
+<!--                     </section>-->
+<!--                  </div>-->
+<!--               </div>-->
+            </section>
+            
+            <section class="board-wrapper">
+<!--               <div class="board-section">-->
+<!--                  <div class="headline-wrapper">-->
+<!--                     <span class="headline">{{ 'Home.Board.Feedback' | translate }}</span>-->
+<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
+<!--                  </div>-->
+<!--                  <div class="board-subsection">-->
+<!--                     <section class="drag-area" id="cdk-drop-list-2" #listFeedback="cdkDropList" cdkDropList-->
+<!--                              [cdkDropListConnectedTo]="[listTodo, listProgress, listDone]"-->
+<!--                              [cdkDropListData]="feedback" (cdkDropListDropped)="drop($event)">-->
+<!--                        <ng-container *ngIf="feedback.length === 0">-->
+<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
+<!--                        </ng-container>-->
+<!--                        @if (tasks.length > 0) {-->
+<!--                           @for (task of feedback; track trackByTaskId( idx, task ); let idx = $index) {-->
+<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
+<!--                           }-->
+<!--                        }-->
+<!--                     </section>-->
+<!--                  </div>-->
+<!--               </div>-->
+            </section>
+            
+            <section class="board-wrapper">
+<!--               <div class="board-section">-->
+<!--                  <div class="headline-wrapper">-->
+<!--                     <span class="headline">{{ 'Home.Board.Done' | translate }}</span>-->
+<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
+<!--                  </div>-->
+<!--                  <div class="board-subsection">-->
+<!--                     <section class="drag-area" id="cdk-drop-list-3" #listDone="cdkDropList" cdkDropList-->
+<!--                              [cdkDropListConnectedTo]="[listTodo, listProgress, listFeedback]"-->
+<!--                              [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">-->
+<!--                        <ng-container *ngIf="done.length === 0">-->
+<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
+<!--                        </ng-container>-->
+<!--                        @if (tasks.length > 0) {-->
+<!--                           @for (task of done; track trackByTaskId( idx, task ); let idx = $index) {-->
+<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
+<!--                           }-->
+<!--                        }-->
+<!--                     </section>-->
+<!--                  </div>-->
+<!--               </div>-->
+            </section>
+         </div>
+      </div>
+   </main>
+</div>
+
+@if (showNoteEditDialog) {
+   <note-card></note-card>
+}
+
+@if (showNoteCreateDialog) {
+   <note-create></note-create>
+}

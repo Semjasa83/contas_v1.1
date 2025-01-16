@@ -4,6 +4,7 @@ import { Contact } from "../../interfaces/contact.interface";
 import { ContactCardComponent } from "./contact-card/contact-card.component";
 import { NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
 import { ContactCreateComponent } from "./contact-create/contact-create.component";
+import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
 
 @Component({
     selector: 'contact',
@@ -13,6 +14,7 @@ import { ContactCreateComponent } from "./contact-create/contact-create.componen
         UpperCasePipe,
         TitleCasePipe,
         NgStyle,
+        IconAddComponent
     ],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',

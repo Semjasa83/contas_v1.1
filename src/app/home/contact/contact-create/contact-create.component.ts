@@ -28,6 +28,7 @@ export class ContactCreateComponent {
       company: new FormControl(''),
       phone : new FormControl('', Validators.required),
       note : new FormControl(''),
+      color : new FormControl('')
     })
   }
 
@@ -35,8 +36,14 @@ export class ContactCreateComponent {
     event.stopPropagation();
   }
 
+  private generateRandomColor() {
+    let varColor = Math.floor(Math.random() * 359);
+    return `hsl(${varColor}, 75%, 75%)`;
+  }
+
   public async createContact() {
     if (this.contactForm.valid) {
+      this.contactForm.patchValue({ color: this.generateRandomColor()});
       this.contactService.createContact(this.contactForm.value);
       this.contactCreated.emit(this.contactForm.value);
       this.showCreateDialog.emit(false);
