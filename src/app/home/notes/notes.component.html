@@ -1,4 +1,4 @@
-<div class="py-10 bg-white w-screen overflow-x-hidden">
+<div class="py-10 bg-white w-screen overflow-x-hidden min-h-full">
    <header>
       <div class="flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
          <h1 class="text-3xl font-bold tracking-tight text-gray-900">Board</h1>
@@ -11,100 +11,211 @@
    </header>
    <main class="flex justify-center w-full">
       <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      
-         <div cdkDropListGroup class="drop-list-wrapper">
-            <section class="board-wrapper">
-<!--               <div class="board-section">-->
-<!--                  <div class="headline-wrapper">-->
-<!--                     <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>-->
-<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
-<!--                  </div>-->
-<!--                  <div class="board-subsection">-->
-<!--                     <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList-->
-<!--                              [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"-->
-<!--                              [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">-->
-<!--                        <ng-container *ngIf="todo.length === 0">-->
-<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
-<!--                        </ng-container>-->
-<!--                        @if (tasks.length > 0) {-->
-<!--                           @for (task of todo; track trackByTaskId( idx, task ); let idx = $index) {-->
-<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
-<!--                           }-->
-<!--                        }-->
-<!--                     </section>-->
-<!--                  </div>-->
-<!--               </div>-->
-            </section>
+         <div class="min-h-full overflow-y-auto">
+            <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 ">
+               
+               
+               <li class="col-span-1 divide-y divide-gray-200 rounded-lg gap-2 bg-white shadow h-full">
+                  
+                  
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+                  
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+               
+               
+               </li>
+               
+               
+               <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+                  
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+               </li>
+               
+               
+               <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+                  
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+               </li>
+               
+               
+               <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+                  
+                  <div class="flex w-full items-center justify-between space-x-6 p-6">
+                     <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                           <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                           <span class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                     </div>
+                     <img class="size-10 shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+               </li>
             
-            <section class="board-wrapper">
-<!--               <div class="board-section">-->
-<!--                  <div class="headline-wrapper">-->
-<!--                     <span class="headline">{{ 'Home.Board.Progress' | translate }}</span>-->
-<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
-<!--                  </div>-->
-<!--                  <div class="board-subsection">-->
-<!--                     <section class="drag-area" id="cdk-drop-list-1" #listProgress="cdkDropList" cdkDropList-->
-<!--                              [cdkDropListConnectedTo]="[listTodo, listFeedback, listDone]"-->
-<!--                              [cdkDropListData]="progress" (cdkDropListDropped)="drop($event)">-->
-<!--                        <ng-container *ngIf="progress.length === 0">-->
-<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
-<!--                        </ng-container>-->
-<!--                        @if (tasks.length > 0) {-->
-<!--                           @for (task of progress; track trackByTaskId( idx, task ); let idx = $index) {-->
-<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
-<!--                           }-->
-<!--                        }-->
-<!--                     </section>-->
-<!--                  </div>-->
-<!--               </div>-->
-            </section>
-            
-            <section class="board-wrapper">
-<!--               <div class="board-section">-->
-<!--                  <div class="headline-wrapper">-->
-<!--                     <span class="headline">{{ 'Home.Board.Feedback' | translate }}</span>-->
-<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
-<!--                  </div>-->
-<!--                  <div class="board-subsection">-->
-<!--                     <section class="drag-area" id="cdk-drop-list-2" #listFeedback="cdkDropList" cdkDropList-->
-<!--                              [cdkDropListConnectedTo]="[listTodo, listProgress, listDone]"-->
-<!--                              [cdkDropListData]="feedback" (cdkDropListDropped)="drop($event)">-->
-<!--                        <ng-container *ngIf="feedback.length === 0">-->
-<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
-<!--                        </ng-container>-->
-<!--                        @if (tasks.length > 0) {-->
-<!--                           @for (task of feedback; track trackByTaskId( idx, task ); let idx = $index) {-->
-<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
-<!--                           }-->
-<!--                        }-->
-<!--                     </section>-->
-<!--                  </div>-->
-<!--               </div>-->
-            </section>
-            
-            <section class="board-wrapper">
-<!--               <div class="board-section">-->
-<!--                  <div class="headline-wrapper">-->
-<!--                     <span class="headline">{{ 'Home.Board.Done' | translate }}</span>-->
-<!--                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">-->
-<!--                  </div>-->
-<!--                  <div class="board-subsection">-->
-<!--                     <section class="drag-area" id="cdk-drop-list-3" #listDone="cdkDropList" cdkDropList-->
-<!--                              [cdkDropListConnectedTo]="[listTodo, listProgress, listFeedback]"-->
-<!--                              [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">-->
-<!--                        <ng-container *ngIf="done.length === 0">-->
-<!--                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>-->
-<!--                        </ng-container>-->
-<!--                        @if (tasks.length > 0) {-->
-<!--                           @for (task of done; track trackByTaskId( idx, task ); let idx = $index) {-->
-<!--                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>-->
-<!--                           }-->
-<!--                        }-->
-<!--                     </section>-->
-<!--                  </div>-->
-<!--               </div>-->
-            </section>
+            </ul>
          </div>
+
+        
+      
+<!--         <div cdkDropListGroup class="flex flex-row gap-8 w">-->
+<!--            <section class="board-wrapper">-->
+<!--&lt;!&ndash;               <div class="board-section">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="headline-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="board-subsection">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ng-container *ngIf="todo.length === 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        @if (tasks.length > 0) {&ndash;&gt;-->
+<!--&lt;!&ndash;                           @for (task of todo; track trackByTaskId( idx, task ); let idx = $index) {&ndash;&gt;-->
+<!--&lt;!&ndash;                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>&ndash;&gt;-->
+<!--&lt;!&ndash;                           }&ndash;&gt;-->
+<!--&lt;!&ndash;                        }&ndash;&gt;-->
+<!--&lt;!&ndash;                     </section>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+<!--            </section>-->
+<!--            -->
+<!--            <section class="board-wrapper">-->
+<!--&lt;!&ndash;               <div class="board-section">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="headline-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <span class="headline">{{ 'Home.Board.Progress' | translate }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="board-subsection">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <section class="drag-area" id="cdk-drop-list-1" #listProgress="cdkDropList" cdkDropList&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListConnectedTo]="[listTodo, listFeedback, listDone]"&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListData]="progress" (cdkDropListDropped)="drop($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ng-container *ngIf="progress.length === 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        @if (tasks.length > 0) {&ndash;&gt;-->
+<!--&lt;!&ndash;                           @for (task of progress; track trackByTaskId( idx, task ); let idx = $index) {&ndash;&gt;-->
+<!--&lt;!&ndash;                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>&ndash;&gt;-->
+<!--&lt;!&ndash;                           }&ndash;&gt;-->
+<!--&lt;!&ndash;                        }&ndash;&gt;-->
+<!--&lt;!&ndash;                     </section>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+<!--            </section>-->
+<!--            -->
+<!--            <section class="board-wrapper">-->
+<!--&lt;!&ndash;               <div class="board-section">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="headline-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <span class="headline">{{ 'Home.Board.Feedback' | translate }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="board-subsection">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <section class="drag-area" id="cdk-drop-list-2" #listFeedback="cdkDropList" cdkDropList&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListConnectedTo]="[listTodo, listProgress, listDone]"&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListData]="feedback" (cdkDropListDropped)="drop($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ng-container *ngIf="feedback.length === 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        @if (tasks.length > 0) {&ndash;&gt;-->
+<!--&lt;!&ndash;                           @for (task of feedback; track trackByTaskId( idx, task ); let idx = $index) {&ndash;&gt;-->
+<!--&lt;!&ndash;                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>&ndash;&gt;-->
+<!--&lt;!&ndash;                           }&ndash;&gt;-->
+<!--&lt;!&ndash;                        }&ndash;&gt;-->
+<!--&lt;!&ndash;                     </section>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+<!--            </section>-->
+<!--            -->
+<!--            <section class="board-wrapper">-->
+<!--&lt;!&ndash;               <div class="board-section">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="headline-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <span class="headline">{{ 'Home.Board.Done' | translate }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="board-subsection">&ndash;&gt;-->
+<!--&lt;!&ndash;                     <section class="drag-area" id="cdk-drop-list-3" #listDone="cdkDropList" cdkDropList&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListConnectedTo]="[listTodo, listProgress, listFeedback]"&ndash;&gt;-->
+<!--&lt;!&ndash;                              [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ng-container *ngIf="done.length === 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;                        @if (tasks.length > 0) {&ndash;&gt;-->
+<!--&lt;!&ndash;                           @for (task of done; track trackByTaskId( idx, task ); let idx = $index) {&ndash;&gt;-->
+<!--&lt;!&ndash;                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>&ndash;&gt;-->
+<!--&lt;!&ndash;                           }&ndash;&gt;-->
+<!--&lt;!&ndash;                        }&ndash;&gt;-->
+<!--&lt;!&ndash;                     </section>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+<!--            </section>-->
+<!--         </div>-->
       </div>
    </main>
 </div>

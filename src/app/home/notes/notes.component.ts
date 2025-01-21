@@ -5,6 +5,8 @@ import { NoteCreateComponent } from "./note-create/note-create.component";
 import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Note } from "../../interfaces/note.interface";
+import { NotesService } from '../../../services/notes.service';
+
 
 @Component({
   selector: 'notes',
@@ -25,6 +27,18 @@ export class NotesComponent {
   public indexNote: any;
   public indexNotes: any;
 
+
+  constructor( private noteService: NotesService) {}
+
+  public ngOnInit(): void {
+    this.noteService.getAllNotes().subscribe(response => {
+      this.notes = response;
+      console.log(this.notes);
+    }, error => {
+      console.error('Error fetching notes:', error);
+    });
+  }
+  
   /*
   public tasks: Task[] = [];
   private tasksSubscription: Subscription = new Subscription();
