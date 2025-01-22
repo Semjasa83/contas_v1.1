@@ -40,7 +40,7 @@ export class ContactCardComponent {
 
     public async deleteContact() {
         if (this.contactForm.valid && this.contactData?.id) {
-            this.contactService.deleteContact(this.contactData.id);
+            await this.contactService.deleteContact(this.contactData.id);
             this.contactDeleted.emit();
         } else {
             console.error('Form is invalid or contact ID is missing');
