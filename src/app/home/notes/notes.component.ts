@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TitleCasePipe, UpperCasePipe } from "@angular/common";
+import { NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
 import { NoteCardComponent } from "./note-card/note-card.component";
 import { NoteCreateComponent } from "./note-create/note-create.component";
 import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
@@ -10,12 +10,13 @@ import { NotesService } from '../../../services/notes.service';
 
 @Component({
   selector: 'notes',
-  imports: [
-    NoteCardComponent,
-    NoteCreateComponent,
-    IconAddComponent,
-    DragDropModule,
-  ],
+    imports: [
+        NoteCardComponent,
+        NoteCreateComponent,
+        IconAddComponent,
+        DragDropModule,
+        NgStyle,
+    ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
@@ -24,8 +25,7 @@ export class NotesComponent {
   public showNoteEditDialog: boolean = false;
   public showNoteCreateDialog: boolean = false;
   public selectedNote?: Note;
-  public indexNote: any;
-  public indexNotes: any;
+
 
 
   constructor( private noteService: NotesService) {}
