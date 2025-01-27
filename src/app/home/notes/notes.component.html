@@ -9,71 +9,66 @@
    </header>
    
    <main class="flex justify-center w-full h-full">
-      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 overflow-x-auto">
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 overflow-x-auto w-full">
          <div class="h-full overflow-y-auto">
             <ul role="list" class="grid grid-cols-1 h-full gap-4 sm:grid-cols-2 lg:grid-cols-4 ">
                
                
-               <li class="col-span-1 rounded-lg gap-2 bg-white border-gray-100 border-2">
+               <li class="col-span-1 rounded-lg gap-2 w-full bg-white border-gray-100 border-2 flex-1">
                   <section class="flex flex-col w-full h-full  divide-y divide-gray-200" id="cdk-drop-list-0"
                            #listTodo="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listLow, listHigh, listDone]"
-                           [cdkDropListData]="">
+                           [cdkDropListData]="todo">
                      
                      
-<!--                     <div class="flex w-full items-center justify-between space-x-6 p-6">-->
-<!--                        <div class="flex-1 truncate">-->
-<!--                           <div class="flex items-center space-x-3">-->
-<!--                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>-->
-<!--                              <span-->
-<!--                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>-->
-<!--                           </div>-->
-<!--                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>-->
-<!--                        </div>-->
-<!--                     </div>-->
-<!--                     -->
-<!--                     <div class="flex w-full items-center justify-between space-x-6 p-6">-->
-<!--                        <div class="flex-1 truncate">-->
-<!--                           <div class="flex items-center space-x-3">-->
-<!--                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>-->
-<!--                              <span-->
-<!--                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>-->
-<!--                           </div>-->
-<!--                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>-->
-<!--                        </div>-->
-<!--                     </div>-->
+                     <aside class="flex w-full items-center justify-between space-x-6 p-6" cdkDrag>
+                        <div class="flex-1 truncate">
+                           <div class="flex items-center space-x-3">
+                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                              <span
+                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                           </div>
+                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                        </div>
+                     </aside>
+                     
+                     <aside class="flex w-full items-center justify-between space-x-6 p-6" cdkDrag>
+                        <div class="flex-1 truncate">
+                           <div class="flex items-center space-x-3">
+                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>
+                              <span
+                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
+                           </div>
+                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
+                        </div>
+                     </aside>
                   </section>
                </li>
                
-               
-               <li class="col-span-1 divide-y divide-gray-200 rounded-lg gap-2 bg-white border-gray-100 border-2">
+               <li class="col-span-1 rounded-lg gap-2 w-full bg-white border-gray-100 border-2 flex-1">
                   <section class="flex flex-col w-full h-full  divide-y divide-gray-200" id="cdk-drop-list-1"
                            #listLow="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listHigh, listDone]"
-                           [cdkDropListData]="">
-                     
+                           [cdkDropListData]="low">
                   </section>
                </li>
                
-               
-               <li class="col-span-1 divide-y divide-gray-200 rounded-lg gap-2 bg-white border-gray-100 border-2">
+               <li class="col-span-1 rounded-lg gap-2 w-full bg-white border-gray-100 border-2 flex-1">
                   <section class="flex flex-col w-full h-full  divide-y divide-gray-200" id="cdk-drop-list-2"
                            #listHigh="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listLow, listDone]"
-                           [cdkDropListData]="">
-                  
+                           [cdkDropListData]="high">
                   </section>
                </li>
                
-               
-               <li class="col-span-1 divide-y divide-gray-200 rounded-lg gap-2 bg-white border-gray-100 border-2">
+               <li class="col-span-1 rounded-lg gap-2 w-full bg-white border-gray-100 border-2 flex-1">
                   <section class="flex flex-col w-full h-full  divide-y divide-gray-200" id="cdk-drop-list-3"
                            #listDone="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listLow, listHigh]"
-                           [cdkDropListData]="">
-                  
+                           [cdkDropListData]="done">
                   </section>
                </li>
+               
             
             </ul>
          </div>

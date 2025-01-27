@@ -25,7 +25,10 @@ export class NotesComponent {
   public showNoteEditDialog: boolean = false;
   public showNoteCreateDialog: boolean = false;
   public selectedNote?: Note;
-
+  public todo: Note[] = [];
+  public low: Note[] = [];
+  public high: Note[] = [];
+  public done: Note[] = [];
 
 
   constructor( private noteService: NotesService) {}
