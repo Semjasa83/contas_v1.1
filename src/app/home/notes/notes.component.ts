@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgClass, TitleCasePipe, UpperCasePipe } from "@angular/common";
+import { NgTemplateOutlet } from "@angular/common";
 import { NoteCardComponent } from "./note-card/note-card.component";
 import { NoteCreateComponent } from "./note-create/note-create.component";
 import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
@@ -15,7 +15,7 @@ import { NotesService } from '../../../services/notes.service';
         NoteCreateComponent,
         IconAddComponent,
         DragDropModule,
-        NgClass,
+        NgTemplateOutlet,
     ],
     templateUrl: './notes.component.html',
     styleUrl: './notes.component.scss'
@@ -37,41 +37,39 @@ export class NotesComponent {
     public ngOnInit(): void {
         this.noteService.getAllNotes().subscribe(response => {
             this.notes = response;
+            this.distributeNotesByPriority();
             console.log(this.notes);
         }, error => {
             console.error('Error fetching notes:', error);
         });
     }
 
-    public showPriority( priority: number ): string {
-        switch ( priority ) {
-            case 1:
-                return 'Todo';
-            case 2:
-                return 'Low';
-            case 3:
-                return 'High';
-            case 4:
-                return 'Done';
-            default:
-                return 'NULL';
-        }
+    private distributeNotesByPriority(): void {
+        this.todo = [];
+        this.low = [];
+        this.high = [];
+        this.done = [];
+
+        this.notes.forEach(note => {
+            switch (note.priority) {
+                case 1:
+                    this.todo.push(note);
+                    break;
+                case 2:
+                    this.low.push(note);
+                    break;
+                case 3:
+                    this.high.push(note);
+                    break;
+                case 4:
+                    this.done.push(note);
+                    break;
+                default:
+                    console.warn(`Unknown priority: ${note.priority}`);
+            }
+        });
     }
 
-    public getPriorityClass(priority: number | null): string {
-        switch (priority) {
-            case 1:
-                return 'bg-cyan-50 text-cyan-500 ring-cyan-400/20';
-            case 2:
-                return 'bg-yellow-50 text-yellow-700 ring-yellow-600/20';
-            case 3:
-                return 'bg-red-50 text-red-700 ring-red-600/20';
-            case 4:
-                return 'bg-green-50 text-green-700 ring-green-600/20';
-            default:
-                return 'bg-white';
-        }
-    }
 
     /*
     public tasks: Task[] = [];

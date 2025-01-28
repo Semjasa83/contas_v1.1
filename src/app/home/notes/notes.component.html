@@ -19,40 +19,14 @@
                            #listTodo="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listLow, listHigh, listDone]"
                            [cdkDropListData]="todo">
-                     @for ( note of notes; track note.id; let idx = $index){
-                        <aside class="flex w-full items-center justify-between space-x-6 p-6" cdkDrag>
-                           <div class="flex-1 truncate">
-                              <div class="flex items-center justify-between space-x-3">
-                                 <h3 class="truncate text-sm font-medium text-gray-900">{{ note.headline }}</h3>
-                                 <span
-                                     class="inline-flex shrink-0 items-center rounded-full  px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset " [ngClass]="getPriorityClass(note.priority)">{{ showPriority(note.priority ?? 0) }}</span>
-                              </div>
-                              <p class="mt-1 truncate text-sm text-gray-500">{{ note.company }}</p>
-                           </div>
-                        </aside>
+                     @for ( note of todo; track note.id; let idx = $index){
+                        @if (todo.length > 0) {
+                           <note-card [noteData]="note" cdkDrag></note-card>
+                        } @else {
+                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                        }
                      }
                      
-<!--                     <aside class="flex w-full items-center justify-between space-x-6 p-6" cdkDrag>-->
-<!--                        <div class="flex-1 truncate">-->
-<!--                           <div class="flex items-center space-x-3">-->
-<!--                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>-->
-<!--                              <span-->
-<!--                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>-->
-<!--                           </div>-->
-<!--                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>-->
-<!--                        </div>-->
-<!--                     </aside>-->
-<!--                     -->
-<!--                     <aside class="flex w-full items-center justify-between space-x-6 p-6" cdkDrag>-->
-<!--                        <div class="flex-1 truncate">-->
-<!--                           <div class="flex items-center space-x-3">-->
-<!--                              <h3 class="truncate text-sm font-medium text-gray-900">Jane Cooper</h3>-->
-<!--                              <span-->
-<!--                                  class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>-->
-<!--                           </div>-->
-<!--                           <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>-->
-<!--                        </div>-->
-<!--                     </aside>-->
                   </section>
                </li>
                
@@ -61,6 +35,13 @@
                            #listLow="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listHigh, listDone]"
                            [cdkDropListData]="low">
+                     @for ( note of low; track note.id; let idx = $index){
+                        @if (low.length > 0) {
+                           <note-card [noteData]="note" cdkDrag></note-card>
+                        } @else {
+                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                        }
+                     }
                   </section>
                </li>
                
@@ -69,6 +50,13 @@
                            #listHigh="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listLow, listDone]"
                            [cdkDropListData]="high">
+                     @for ( note of high; track note.id; let idx = $index){
+                        @if (high.length > 0) {
+                           <note-card [noteData]="note" cdkDrag></note-card>
+                        } @else {
+                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                        }
+                     }
                   </section>
                </li>
                
@@ -77,37 +65,19 @@
                            #listDone="cdkDropList" cdkDropList
                            [cdkDropListConnectedTo]="[listTodo, listLow, listHigh]"
                            [cdkDropListData]="done">
+                     @for ( note of done; track note.id; let idx = $index){
+                        @if (done.length > 0) {
+                           <note-card [noteData]="note" cdkDrag></note-card>
+                        } @else {
+                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                        }
+                     }
                   </section>
                </li>
                
             
             </ul>
          </div>
-         
-         
-         <!--         <div cdkDropListGroup class="flex flex-row gap-8 w">-->
-         <!--            <section class="board-wrapper">-->
-         <!--&lt;!&ndash;               <div class="board-section">&ndash;&gt;-->
-         <!--&lt;!&ndash;                  <div class="headline-wrapper">&ndash;&gt;-->
-         <!--&lt;!&ndash;                     <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>&ndash;&gt;-->
-         <!--&lt;!&ndash;                     <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">&ndash;&gt;-->
-         <!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-         <!--&lt;!&ndash;                  <div class="board-subsection">&ndash;&gt;-->
-         <!--&lt;!&ndash;                     <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList&ndash;&gt;-->
-         <!--&lt;!&ndash;                              [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"&ndash;&gt;-->
-         <!--&lt;!&ndash;                              [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">&ndash;&gt;-->
-         <!--&lt;!&ndash;                        <ng-container *ngIf="todo.length === 0">&ndash;&gt;-->
-         <!--&lt;!&ndash;                           <ng-container *ngTemplateOutlet="placeholder"></ng-container>&ndash;&gt;-->
-         <!--&lt;!&ndash;                        </ng-container>&ndash;&gt;-->
-         <!--&lt;!&ndash;                        @if (tasks.length > 0) {&ndash;&gt;-->
-         <!--&lt;!&ndash;                           @for (task of todo; track trackByTaskId( idx, task ); let idx = $index) {&ndash;&gt;-->
-         <!--&lt;!&ndash;                              <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>&ndash;&gt;-->
-         <!--&lt;!&ndash;                           }&ndash;&gt;-->
-         <!--&lt;!&ndash;                        }&ndash;&gt;-->
-         <!--&lt;!&ndash;                     </section>&ndash;&gt;-->
-         <!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-         <!--&lt;!&ndash;               </div>&ndash;&gt;-->
-         <!--            </section>-->
       
       </div>
    </main>
@@ -120,3 +90,14 @@
 @if (showNoteCreateDialog) {
    <note-create></note-create>
 }
+
+<ng-template #placeholder>
+   <div class="flex w-full items-center justify-between space-x-6 p-6 bg-diagonal-stripes border-indigo-200 border-2">
+      <div class="flex-1 truncate">
+         <div class="flex flex-col justify-center items-center h-fit truncate text-sm font-medium text-indigo-300">
+            <span>No Items</span>
+            <span>Drag Here</span>
+         </div>
+      </div>
+   </div>
+</ng-template>

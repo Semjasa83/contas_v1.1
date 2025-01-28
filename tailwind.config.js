@@ -5,7 +5,11 @@ module.exports = {
   ],
   darkMode: 'selector',
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'diagonal-stripes': 'repeating-linear-gradient(45deg, #ffffff 0%, #ffffff 8px, #eef2ff 8px, #eef2ff 14px)',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
