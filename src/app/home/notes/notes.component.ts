@@ -3,8 +3,8 @@ import { NgTemplateOutlet } from "@angular/common";
 import { NoteCardComponent } from "./note-card/note-card.component";
 import { NoteCreateComponent } from "./note-create/note-create.component";
 import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
-import { DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { NoteImpl } from "../../interfaces/note.interface";
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { Note, NoteImpl } from "../../interfaces/note.interface";
 import { NotesService } from '../../../services/notes.service';
 
 
@@ -70,18 +70,22 @@ export class NotesComponent {
         });
     }
 
+    public drop(event: CdkDragDrop<Note[]>): void {
+        if (event.previousContainer === event.container) {
+            // Reorder items within the same list
+            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+            // Move items between lists
+            console.log('previousContainer', event.previousContainer.data);
+            transferArrayItem(
+                event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex
+            );
+            const note = event.container.data[event.currentIndex];
+        }
+    }
 
-    /*
-    public tasks: Task[] = [];
-    private tasksSubscription: Subscription = new Subscription();
-    private pollingInterval: any;
-    public showAddTask: boolean = false;
-
-    // @HostListener('window:resize', ['$event'])
-    public done: Task[] = [];
-    public feedback: Task[] = [];
-    public progress: Task[] = [];
-    public todo: Task[] = [];
-    */
 
 }
