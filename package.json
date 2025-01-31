@@ -23,6 +23,7 @@
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.1",
     "@ngrx/effects": "^19.0.0",
+    "@ngrx/entity": "^19.0.0",
     "@ngrx/signals": "^19.0.0",
     "@ngrx/store": "^19.0.0",
     "@ngrx/store-devtools": "^19.0.0",

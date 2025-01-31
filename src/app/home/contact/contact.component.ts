@@ -5,6 +5,7 @@ import { ContactCardComponent } from "./contact-card/contact-card.component";
 import { NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
 import { ContactCreateComponent } from "./contact-create/contact-create.component";
 import { IconAddComponent } from '../../../../public/assets/icons/icon-add.component';
+import { Subscription } from "rxjs";
 
 @Component({
     selector: 'contact',
@@ -29,6 +30,7 @@ export class ContactComponent {
     public selectedContact?: Contact;
     public indexLetters: string[] = [];
     public indexContacts: { [key: string]: Contact[] } = {};
+    private pollingSubscription?: Subscription;
 
     constructor( private contactService: ContactService) {}
 
@@ -39,7 +41,12 @@ export class ContactComponent {
         }, error => {
           console.error('Error fetching contacts:', error);
         });
+        this.startPolling();
       }
+
+    private ngOnDestroy(): void {
+        this.stopPolling();
+    }
 
     private sortContacts(contacts: Contact[]) {
         this.indexLetters = [];
@@ -78,6 +85,25 @@ export class ContactComponent {
     public onContactCreated(newContact: Contact) {
         this.contacts.push(newContact);
         this.sortContacts(this.contacts);
+    }
+
+    private startPolling(): void {
+        this.pollingSubscription = new Subscription();
+        const polling = setInterval(() => {
+            this.contactService.getAllContacts().subscribe(response => {
+                this.contacts = response;
+                this.sortContacts(this.contacts);
+            }, error => {
+                console.error('Error fetching contacts:', error);
+            });
+        }, 2000);
+        this.pollingSubscription.add({ unsubscribe: () => clearInterval(polling) });
+    }
+
+    private stopPolling(): void {
+        if (this.pollingSubscription) {
+            this.pollingSubscription.unsubscribe();
+        }
     }
 
 }
