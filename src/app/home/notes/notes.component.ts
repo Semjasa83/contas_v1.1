@@ -6,6 +6,7 @@ import { IconAddComponent } from '../../../../public/assets/icons/icon-add.compo
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Note, NoteImpl } from "../../interfaces/note.interface";
 import { NotesService } from '../../../services/notes.service';
+import { NoteEditComponent } from "./note-edit/note-edit.component";
 
 
 @Component({
@@ -16,6 +17,7 @@ import { NotesService } from '../../../services/notes.service';
         IconAddComponent,
         DragDropModule,
         NgTemplateOutlet,
+        NoteEditComponent,
     ],
     templateUrl: './notes.component.html',
     styleUrl: './notes.component.scss'
@@ -85,6 +87,14 @@ export class NotesComponent {
             );
             const note = event.container.data[event.currentIndex];
         }
+    }
+
+    public handleEditDialog(event: boolean) {
+        this.showNoteEditDialog = event;
+    }
+
+    public handleCreateDialog(event: boolean) {
+        this.showNoteCreateDialog = event;
     }
 
 

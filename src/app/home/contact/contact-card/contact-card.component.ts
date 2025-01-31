@@ -38,6 +38,10 @@ export class ContactCardComponent {
         event.stopPropagation();
     }
 
+    public getNoteLength() : number {
+        return this.contactForm.get('note')?.value.length || 0;
+    }
+
     public async deleteContact() {
         if (this.contactForm.valid && this.contactData?.id) {
             await this.contactService.deleteContact(this.contactData.id);

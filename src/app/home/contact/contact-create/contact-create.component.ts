@@ -41,6 +41,10 @@ export class ContactCreateComponent {
     return `hsl(${varColor}, 75%, 75%)`;
   }
 
+  public getNoteLength() : number {
+    return this.contactForm.get('note')?.value.length || 0;
+  }
+
   public async createContact() {
     if (this.contactForm.valid) {
       this.contactForm.patchValue({ color: this.generateRandomColor()});
