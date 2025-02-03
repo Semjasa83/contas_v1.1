@@ -18,7 +18,7 @@ import { DateFormatPipe } from "../../../interfaces/datePipe";
 })
 export class NoteCreateComponent {
 
-  @Output('showCreateDialog') showCreateDialog = new EventEmitter<boolean>();
+  @Output('showNoteCreateDialog') showNoteCreateDialog = new EventEmitter<boolean>();
   @Output() noteCreated = new EventEmitter<Note>();
 
   public noteForm!: FormGroup;
@@ -44,4 +44,5 @@ export class NoteCreateComponent {
   public getNoteLength(): number{
     return this.noteForm.get('note')?.value.length || 0;
   }
+
 }

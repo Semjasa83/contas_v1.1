@@ -100,7 +100,7 @@
 }
 
 @if (showNoteCreateDialog) {
-   <note-create></note-create>
+   <note-create (showNoteCreateDialog)="handleCreateDialog($event)"></note-create>
 }
 
 <ng-template #placeholder>

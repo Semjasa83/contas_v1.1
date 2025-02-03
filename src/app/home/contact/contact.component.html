@@ -76,11 +76,11 @@
 </div>
 
 @if (showContactEditDialog) {
-   <contact-card (showEditDialog)="handleEditDialog($event)" [contactData]="selectedContact"
+   <contact-card (showContactEditDialog)="handleEditDialog($event)" [contactData]="selectedContact"
                  (contactDeleted)="onContactDeleted()"></contact-card>
 }
 
 @if (showContactCreateDialog) {
-   <contact-create (showCreateDialog)="handleCreateDialog($event)"
+   <contact-create (showContactCreateDialog)="handleCreateDialog($event)"
                    (contactCreated)="onContactCreated($event)"></contact-create>
 }

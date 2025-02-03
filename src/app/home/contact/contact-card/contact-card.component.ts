@@ -15,7 +15,7 @@ import { ContactService } from "../../../../services/contact.service";
 })
 export class ContactCardComponent {
 
-    @Output('showEditDialog') showEditDialog = new EventEmitter<boolean>();
+    @Output('showContactEditDialog') showContactEditDialog = new EventEmitter<boolean>();
     @Output() contactDeleted = new EventEmitter<void>();
     @Input() contactData?: Contact;
 
@@ -54,7 +54,7 @@ export class ContactCardComponent {
     public async updateContact(id?: string | null | undefined) {
         if (this.contactForm.valid && id) {
             this.contactService.updateContact(id, this.contactForm.value);
-            this.showEditDialog.emit(false);
+            this.showContactEditDialog.emit(false);
         } else {
             console.error('Form is invalid or contact ID is missing');
         }

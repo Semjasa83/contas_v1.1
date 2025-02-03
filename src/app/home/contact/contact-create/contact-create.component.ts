@@ -13,7 +13,7 @@ import { ContactService } from "../../../../services/contact.service";
 })
 export class ContactCreateComponent {
 
-  @Output('showCreateDialog') showCreateDialog = new EventEmitter<boolean>();
+  @Output('showContactCreateDialog') showContactCreateDialog = new EventEmitter<boolean>();
   @Output() contactCreated = new EventEmitter<Contact>();
 
   public contactForm!: FormGroup;
@@ -50,7 +50,7 @@ export class ContactCreateComponent {
       this.contactForm.patchValue({ color: this.generateRandomColor()});
       this.contactService.createContact(this.contactForm.value);
       this.contactCreated.emit(this.contactForm.value);
-      this.showCreateDialog.emit(false);
+      this.showContactCreateDialog.emit(false);
     } else {
       console.error('Form is invalid');
     }

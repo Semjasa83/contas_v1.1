@@ -95,6 +95,8 @@ export class NotesComponent {
 
     public handleCreateDialog(event: boolean) {
         this.showNoteCreateDialog = event;
+        console.log('showNoteCreateDialog', this.showNoteCreateDialog);
+        
     }
 
 
