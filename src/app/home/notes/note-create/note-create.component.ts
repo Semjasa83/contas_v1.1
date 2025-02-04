@@ -4,15 +4,17 @@ import { Contact } from "../../../interfaces/contact.interface";
 import { Note } from "../../../interfaces/note.interface";
 import { ContactService } from "../../../../services/contact.service";
 import { NotesService } from "../../../../services/notes.service";
-import { DateFormatPipe } from "../../../interfaces/datePipe";
+import { NgClass, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'note-create',
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    DateFormatPipe
-  ],
+    UpperCasePipe,
+    NgStyle,
+    NgClass
+],
   templateUrl: './note-create.component.html',
   styleUrl: './note-create.component.scss'
 })
@@ -22,19 +24,41 @@ export class NoteCreateComponent {
   @Output() noteCreated = new EventEmitter<Note>();
 
   public noteForm!: FormGroup;
+  public date = new Date();
+  public contacts: Contact[] = [];
+  public showContacts = false;
+  public selectedContacts: string[] = [];
 
   constructor(private contactService: ContactService, private noteService: NotesService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.fillForm();
+    this.fetchContacts();
+  }
+
+  private fillForm() {
+    const currentDate = new Date().toISOString().substring(0, 10);
     this.noteForm = new FormGroup({
       headline : new FormControl('', Validators.required),
       company : new FormControl(''),
-      startDate : new FormControl(''),
-      endDate: new FormControl(''),
+      startDate: new FormControl(currentDate, Validators.required),
+      endDate: new FormControl(currentDate, Validators.required),
       note : new FormControl(''),
       priority : new FormControl(''),
       contactIds : new FormControl([]),
     })
+  }
+
+  private async fetchContacts() {
+    this.contactService.getAllContacts().subscribe({
+      next: (response) => {
+        this.contacts = response;
+        this.contacts.sort((a, b) => (a.lastname ?? '').localeCompare(b.lastname ?? ''));
+      },
+      error: (error) => {
+        console.error('Error fetching contacts:', error);
+      }
+    });
   }
 
   public preventPropagation(event: any) {
@@ -43,6 +67,22 @@ export class NoteCreateComponent {
 
   public getNoteLength(): number{
     return this.noteForm.get('note')?.value.length || 0;
+  }
+
+  toggleContacts(): void {
+    this.showContacts = !this.showContacts;
+  }
+
+  toggleContactSelection(contactId: string): void {
+    if (this.selectedContacts.includes(contactId)) {
+      this.selectedContacts = this.selectedContacts.filter(id => id !== contactId);
+    } else {
+      this.selectedContacts.push(contactId);
+    }
+  }
+
+  isSelected(contactId: string): boolean {
+    return this.selectedContacts.includes(contactId);
   }
 
 }
