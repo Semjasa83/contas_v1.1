@@ -24,7 +24,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: DashboardComponent },
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'board', component: NotesComponent },
+            { path: 'notes', component: NotesComponent },
             { path: 'contacts', component: ContactComponent},
         ]
     },

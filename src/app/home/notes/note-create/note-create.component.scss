@@ -1,0 +1,14 @@
+.badge-overlap {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    margin-right: -10px; // Anpassung der Überlappung
+    z-index: 1;
+
+    &:nth-child(n+1) {
+      margin-left: -10px; // Anpassung der Überlappung
+      z-index: auto;
+    }
+  }
+}

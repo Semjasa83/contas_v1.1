@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Contact } from "../../../interfaces/contact.interface";
 import { TitleCasePipe } from "@angular/common";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ContactService } from "../../../../services/contact.service";
+import { Contact } from '../../../interfaces/contact.interface';
 
 @Component({
     selector: 'contact-card',

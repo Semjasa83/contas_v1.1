@@ -27,7 +27,7 @@ export class NoteCreateComponent {
   public date = new Date();
   public contacts: Contact[] = [];
   public showContacts = false;
-  public selectedContacts: string[] = [];
+  public selectedContacts: Contact[] = [];
 
   constructor(private contactService: ContactService, private noteService: NotesService) {}
 
@@ -73,7 +73,7 @@ export class NoteCreateComponent {
     this.showContacts = !this.showContacts;
   }
 
-  toggleContactSelection(contactId: string): void {
+  toggleContactSelection(contactId: Contact): void {
     if (this.selectedContacts.includes(contactId)) {
       this.selectedContacts = this.selectedContacts.filter(id => id !== contactId);
     } else {
@@ -81,7 +81,7 @@ export class NoteCreateComponent {
     }
   }
 
-  isSelected(contactId: string): boolean {
+  isSelected(contactId: Contact): boolean {
     return this.selectedContacts.includes(contactId);
   }
 
