@@ -18,9 +18,7 @@ export class ContactCreateComponent {
 
   public contactForm!: FormGroup;
 
-  constructor(private contactService: ContactService) {}
-
-  ngOnInit() {
+  constructor(private contactService: ContactService) {
     this.contactForm = new FormGroup({
       firstname : new FormControl('', Validators.required),
       lastname : new FormControl('', Validators.required),
@@ -30,6 +28,7 @@ export class ContactCreateComponent {
       note : new FormControl(''),
       color : new FormControl('')
     })
+  
   }
 
   public preventPropagation(event: any) {

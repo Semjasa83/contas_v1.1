@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, catchError, Observable, throwError } from "rxjs";
-import { Note } from "../app/interfaces/note.interface";
+import { Note, NoteImpl } from "../app/interfaces/note.interface";
 
 
 @Injectable({
@@ -28,7 +28,7 @@ export class NotesService {
         );
   }
 
-  public createNote(note: Note): void {
+  public createNote(note: NoteImpl): void {
     this.http.post(this.notesUrl, note, { headers: this.headers })
         .pipe(
             catchError(this.handleError)

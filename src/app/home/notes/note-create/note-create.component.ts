@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Contact } from "../../../interfaces/contact.interface";
-import { Note } from "../../../interfaces/note.interface";
+import { Note, NoteImpl } from "../../../interfaces/note.interface";
 import { ContactService } from "../../../../services/contact.service";
 import { NotesService } from "../../../../services/notes.service";
 import { NgClass, NgStyle, UpperCasePipe } from '@angular/common';
@@ -29,14 +29,7 @@ export class NoteCreateComponent {
   public showContacts = false;
   public selectedContacts: Contact[] = [];
 
-  constructor(private contactService: ContactService, private noteService: NotesService) {}
-
-  public ngOnInit() {
-    this.fillForm();
-    this.fetchContacts();
-  }
-
-  private fillForm() {
+  constructor(private contactService: ContactService, private noteService: NotesService) {
     const currentDate = new Date().toISOString().substring(0, 10);
     this.noteForm = new FormGroup({
       headline : new FormControl('', Validators.required),
@@ -44,9 +37,13 @@ export class NoteCreateComponent {
       startDate: new FormControl(currentDate, Validators.required),
       endDate: new FormControl(currentDate, Validators.required),
       note : new FormControl(''),
-      priority : new FormControl(''),
-      contactIds : new FormControl([]),
+      priority : new FormControl(1),
+      contact : new FormControl([]),
     })
+  }
+
+  public ngOnInit() {
+    this.fetchContacts();
   }
 
   private async fetchContacts() {
@@ -59,6 +56,19 @@ export class NoteCreateComponent {
         console.error('Error fetching contacts:', error);
       }
     });
+  }
+
+  public saveNote() {
+    this.noteForm.patchValue({ contact: this.selectedContacts.map(contact => contact.id) });
+    console.log(this.noteForm.value);
+    
+    if (this.noteForm.valid) {
+      const note = this.noteForm.value;
+      note.contact = this.selectedContacts.map(contact => contact.id);
+      this.noteService.createNote(note);
+      this.noteCreated.emit(note);
+      this.showNoteCreateDialog.emit(false);
+    }
   }
 
   public preventPropagation(event: any) {

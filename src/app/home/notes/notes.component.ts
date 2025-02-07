@@ -38,13 +38,17 @@ export class NotesComponent {
 
     public ngOnInit(): void {
         this.noteService.getAllNotes().subscribe(response => {
-            this.notes = response;
-            this.distributeNotesByPriority();
-            console.log(this.notes);
+          // Ensure that every note has a valid contactIds array
+          this.notes = response.map(note => ({
+            ...note,
+            contact: note.contact ?? []
+          }));
+          this.distributeNotesByPriority();
+          console.log(this.notes);
         }, error => {
-            console.error('Error fetching notes:', error);
+          console.error('Error fetching notes:', error);
         });
-    }
+      }
 
     private distributeNotesByPriority(): void {
         this.todo = [];
@@ -72,7 +76,7 @@ export class NotesComponent {
         });
     }
 
-    public drop(event: CdkDragDrop<Note[]>): void {
+    public drop(event: CdkDragDrop<NoteImpl[]>): void {
         if (event.previousContainer === event.container) {
             // Reorder items within the same list
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
