@@ -34,8 +34,8 @@ export class NoteCreateComponent {
     this.noteForm = new FormGroup({
       headline : new FormControl('', Validators.required),
       company : new FormControl(''),
-      startDate: new FormControl(currentDate, Validators.required),
-      endDate: new FormControl(currentDate, Validators.required),
+      start_date: new FormControl(currentDate, Validators.required),
+      end_date: new FormControl(currentDate, Validators.required),
       note : new FormControl(''),
       priority : new FormControl(1),
       contact : new FormControl([]),
@@ -46,7 +46,7 @@ export class NoteCreateComponent {
     this.fetchContacts();
   }
 
-  private async fetchContacts() {
+  private fetchContacts() {
     this.contactService.getAllContacts().subscribe({
       next: (response) => {
         this.contacts = response;
@@ -59,15 +59,28 @@ export class NoteCreateComponent {
   }
 
   public saveNote() {
-    this.noteForm.patchValue({ contact: this.selectedContacts.map(contact => contact.id) });
-    console.log(this.noteForm.value);
-    
     if (this.noteForm.valid) {
-      const note = this.noteForm.value;
-      note.contact = this.selectedContacts.map(contact => contact.id);
-      this.noteService.createNote(note);
-      this.noteCreated.emit(note);
-      this.showNoteCreateDialog.emit(false);
+      const now = new Date().toISOString();
+      const mappedNote: NoteImpl = {
+        id: '',
+        headline: this.noteForm.value.headline,
+        company: this.noteForm.value.company,
+        start_date: this.noteForm.value.start_date,
+        end_date: this.noteForm.value.end_date,
+        note: this.noteForm.value.note,
+        priority: this.noteForm.value.priority,
+        contact: this.selectedContacts.filter((c): c is Contact => c.id !== null).map(c => c.id as string),
+        created_at: now,
+        updated_at: now
+      };
+  
+      try {
+        this.noteService.createNote(mappedNote);
+        this.noteCreated.emit(mappedNote);
+        this.showNoteCreateDialog.emit(false);
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
