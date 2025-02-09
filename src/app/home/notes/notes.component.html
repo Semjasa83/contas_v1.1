@@ -26,7 +26,7 @@
                            <ng-container *ngTemplateOutlet="placeholder"></ng-container>
                         } @else {
                            @for (note of todo; track note.id; let idx = $index) {
-                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-cyan-200"></note-card>
+                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-cyan-200" (click)="selectNote(note)"></note-card>
                            }
                         }
                      </section>
@@ -45,7 +45,7 @@
                            <ng-container *ngTemplateOutlet="placeholder"></ng-container>
                         } @else {
                            @for (note of low; track note.id; let idx = $index) {
-                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-yellow-200"></note-card>
+                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-yellow-200" (click)="selectNote(note)"></note-card>
                            }
                         }
                      </section>
@@ -64,7 +64,7 @@
                            <ng-container *ngTemplateOutlet="placeholder"></ng-container>
                         } @else {
                            @for (note of high; track note.id; let idx = $index) {
-                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-red-200"></note-card>
+                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-red-200" (click)="selectNote(note)"></note-card>
                            }
                         }
                      </section>
@@ -83,7 +83,7 @@
                            <ng-container *ngTemplateOutlet="placeholder"></ng-container>
                         } @else {
                            @for (note of done; track note.id; let idx = $index) {
-                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-green-200"></note-card>
+                              <note-card [noteData]="note" cdkDrag class="border-2 rounded-md m-1 border-green-200" (click)="selectNote(note)"></note-card>
                            }
                         }
                      </section>
@@ -96,7 +96,7 @@
 </div>
 
 @if (showNoteEditDialog) {
-   <note-edit></note-edit>
+   <note-edit (showNoteEditDialog)="handleEditDialog($event)" [noteData]="selectedNote"></note-edit>
 }
 
 @if (showNoteCreateDialog) {

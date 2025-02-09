@@ -99,8 +99,12 @@ export class NotesComponent {
 
     public handleCreateDialog(event: boolean) {
         this.showNoteCreateDialog = event;
-        console.log('showNoteCreateDialog', this.showNoteCreateDialog);
-        
+        console.log('showNoteCreateDialog', this.showNoteCreateDialog); 
+    }
+
+    public selectNote(note: Note) {
+        this.selectedNote = note;
+        this.showNoteEditDialog = true;
     }
 
 
