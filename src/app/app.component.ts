@@ -11,6 +11,7 @@ import { AuthState } from '../auth/auth.reducer';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
   title = 'contas_v1.1';
   token$: Observable<string | null>;
